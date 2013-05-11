@@ -14,7 +14,7 @@ classdef db_class
         % Koristenje:
         %        varijabla = db_class(parametri)
         function obj = db_class(host, user, pass, dbName)
-            javaaddpath('mysql-connector-java-5.1.25/mysql-connector-java-5.1.25-bin.jar');
+            javaaddpath('../static/mysql-connector-java-5.1.25/mysql-connector-java-5.1.25-bin.jar');
             jdbcString = sprintf('jdbc:mysql://%s/%s', host, dbName);
             jdbcDriver = 'com.mysql.jdbc.Driver';
             obj.conn = database(dbName, user , pass, jdbcDriver, jdbcString);
