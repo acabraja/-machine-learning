@@ -4,7 +4,7 @@ function [ X, y ] = create_feature( db_data )
 % Vraca kreirane matrice X i y
 
     % osnovne varijable
-    M = size(X(:,1)); % broj featura
+    M = 6; % broj featura
     N = length(db_data); % broj podataka koje treba obraditi
     y = zeros(N,1);
     x1 = zeros(N,1);
