@@ -24,5 +24,6 @@ function [feature_value, countBlack, countWhite] = ratio_black_white(A, interval
     countBlack = nnz(blackPixelMask);
     countWhite = nnz(whitePixelMask);
     
+    % low level feature
     feature_value = countWhite/countBlack;
 end

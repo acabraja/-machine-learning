@@ -26,7 +26,6 @@ classdef db_class
         % Ulazni parametri
         %       q : sql upit oblika 'SELECT * FROM ....'
         % Vraca vektor ili matricu rezultata
-        
             data = fetch(exec(obj.conn, q));
             query = data.Data;
         end
