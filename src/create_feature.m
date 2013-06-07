@@ -40,7 +40,7 @@ function [ X, y ] = create_feature( db_data )
         [x5(i), x6(i)] = bw(slika);
         %------------------------------------------------------------------
         %Omjer stranica 
-        x7 = side_ratio(slika);
+        x7(i) = side_ratio(slika);
         %------------------------------------------------------------------
         % Binarni vektor y za ispravno neispravno
         ispravnost = char(db_data(i,3));
