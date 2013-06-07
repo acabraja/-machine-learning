@@ -1,5 +1,5 @@
 function [Theta, result] = make_model(L)
-%Adaboost algoritam
+%Adaboost algoritam koji za ulazni parametar L stvara L slabih klasifikatora da bi dobio jaki klasifikator.
 
 load sql_data.mat
 feature_size = 8; 
