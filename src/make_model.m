@@ -64,7 +64,7 @@ for i=2:L
     
     if(i ~= L)
         for k=1:length(db_data1)
-            error(i) = error(i) + w(k) * abs(sigmoid((X(k,:) * theta) - y(k)));
+            error(i) = error(i) + w(k) * abs(sigmoid((X(k,:) * theta)) - y(k));
         end
         
         S = predict(theta,X);
@@ -77,7 +77,7 @@ for i=2:L
         end
     else
         for k=1:length(db_data1)
-            error(i) = error(i) + w(k) * abs(sigmoid((X(k,:) * theta) - y(k)));
+            error(i) = error(i) + w(k) * abs(sigmoid((X(k,:) * theta)) - y(k));
         end
     end
     
