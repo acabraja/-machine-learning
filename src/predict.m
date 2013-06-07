@@ -1,28 +1,15 @@
 function p = predict(theta, X)
-%PREDICT Predict whether the label is 0 or 1 using learned logistic 
-%regression parameters theta
-%   p = PREDICT(theta, X) computes the predictions for X using a 
-%   threshold at 0.5 (i.e., if sigmoid(theta'*x) >= 0.5, predict 1)
+% vraca izracunate vrijednosti kao 0,1
+% Pomnozimo thetu sa svojim X i klasificiramo 1 ako >=0.5; 0 inaće
 
-m = size(X, 1); % Number of training examples
+    m = size(X, 1); % broj primjera
 
-% You need to return the following variables correctly
-p = zeros(m, 1);
+    p = zeros(m, 1); %inicijalizacija
 
-% ====================== YOUR CODE HERE ======================
-% Instructions: Complete the following code to make predictions using
-%               your learned logistic regression parameters. 
-%               You should set p to a vector of 0's and 1's
-%
-rez = sigmoid(X*theta);
-for I = 1:m
-    if(rez(I) >=0.5)
-        p(I)=p(I)+1;
+    rez = sigmoid(X*theta); % aktivacijska funkcija
+    for I = 1:m
+        if(rez(I) >=0.5) %ako je vece od 0.5 onda je to ispravno (1)
+            p(I)=p(I)+1;
+        end
     end
-end
-
-
-% =========================================================================
-
-
 end
