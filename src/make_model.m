@@ -1,5 +1,6 @@
 function [Theta, result] = make_model(L)
 %Adaboost algoritam koji za ulazni parametar L stvara L slabih klasifikatora da bi dobio jaki klasifikator.
+%result je broj netočno klasificiranih primjera iz skupa za učenje
 
 load sql_data.mat
 feature_size = 8; 
@@ -107,5 +108,6 @@ for i=1:length(db_data1)
 end
 
 result = bitxor(rez,y);
+result = sum(result);
 
 end
