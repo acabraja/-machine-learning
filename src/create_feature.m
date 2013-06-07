@@ -25,7 +25,8 @@ function [ X, y ] = create_feature( db_data )
         slika = picture_in_matrix(db_data(i,1),'tablice',db_data(i,2));
     
         % 1. broj crnih i bijelih pixela
-        [~,x1(i),x2(i)] = ratio_black_white(slika,black_interval,white_interval,precision);
+        [~,x1(i),x2(i)] = ...
+            ratio_black_white(slika,black_interval,white_interval,precision);
         %------------------------------------------------------------------
         % 2. broj slova i brojeva 
         [x3(i), x4(i)] = ocr(slika);

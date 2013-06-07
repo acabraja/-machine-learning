@@ -17,9 +17,9 @@ function [letters,number] = ocr(imagen)
     re=imagen;
 
     % ucitaj template
-    load templates
+    %load templates
     global templates
-
+    load templates
     % zbroj znakova u testnom skupu
     num_letras=size(templates,2);
 
@@ -44,7 +44,12 @@ function [letters,number] = ocr(imagen)
         number = 0;
         letters = 0;
         for i=1:length(word)
-            if(strcmp(word(i),'0') || strcmp(word(i),'1') || strcmp(word(i),'2') || strcmp(word(i),'3') || strcmp(word(i),'4') || strcmp(word(i),'5') || strcmp(word(i),'6') || strcmp(word(i),'7') || strcmp(word(i),'8') || strcmp(word(i),'9'))
+            if(strcmp(word(i),'0') || ...
+                    strcmp(word(i),'1') || strcmp(word(i),'2') || ...
+                    strcmp(word(i),'3') || strcmp(word(i),'4') || ...
+                    strcmp(word(i),'5') || strcmp(word(i),'6') || ...
+                    strcmp(word(i),'7') || strcmp(word(i),'8') || ...
+                    strcmp(word(i),'9'))
                 number = number + 1;
             else
                 letters = letters + 1;
