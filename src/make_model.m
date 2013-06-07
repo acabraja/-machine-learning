@@ -106,6 +106,6 @@ for i=1:length(db_data1)
     end
 end
 
-result = sum(rez - y);
+result = bitxor(rez,y);
 
 end
