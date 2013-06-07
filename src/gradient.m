@@ -15,7 +15,7 @@ fprintf('\nZa nastavak pritisnite enter.\n');
 pause;
 
 % Postavljanje varijabli za racunanje optimalnih theta parametara
-initial_theta = ones(size(X, 2), 1)*2;
+initial_theta = zeros(size(X,2), 1);%ones(size(X, 2), 1)*2;
 lambda = 1; % ne gledamo  regularizaciju za sada
 
 % opcije za fminunc
