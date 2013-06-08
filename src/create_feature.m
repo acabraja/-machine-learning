@@ -23,6 +23,8 @@ function [ X, y ] = create_feature( db_data )
     % varijable za 3.
     x5 = zeros(N,1);
     x6 = zeros(N,1);
+    
+    % varijable za 4.
     x7 = zeros(N,1);
     
     % za svaku sliku odredi feature 
@@ -39,7 +41,7 @@ function [ X, y ] = create_feature( db_data )
         %3. slika kao binarana (0,1)
         [x5(i), x6(i)] = bw(slika);
         %------------------------------------------------------------------
-        %Omjer stranica 
+        %4. Omjer stranica 
         x7(i) = side_ratio(slika);
         %------------------------------------------------------------------
         % Binarni vektor y za ispravno neispravno
@@ -58,5 +60,5 @@ function [ X, y ] = create_feature( db_data )
     end
     
     % Kreiranje matrice X sa sredjenim featurima
-    X = [ones(N,1), x1, x2, x3, x4, x5, x6,x7];
+    X = [x1, x2, x3, x4, x5, x6,x7];
 end

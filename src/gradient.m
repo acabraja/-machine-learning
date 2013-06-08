@@ -16,7 +16,7 @@ function [ theta, J, exit_flag ] = gradient( X, y )
 % Postavljanje varijabli za racunanje optimalnih theta parametara
 initial_theta = ones(size(X,2),1)*0.4;
 lambda = 0; % ne gledamo  regularizaciju za sada
-
+X = [ones(size(X,2),1), X];
 % opcije za fminunc
 options = optimset('GradObj', 'on', 'MaxIter', 400); % 400 ineracija
 
