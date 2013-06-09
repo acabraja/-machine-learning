@@ -20,6 +20,7 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
   + baza slika
   + kod za sql bazu podataka
   + neka testiranja
+  + dokumentacija
 
 
 ## Kako koristiti 
