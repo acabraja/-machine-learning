@@ -1,5 +1,5 @@
 function [feature_value, countBlack, countWhite] = ...
-    ratio_black_white(A, interval_black, interval_white, precision)
+    pixel_interval_count(A, interval_black, interval_white, precision)
 %Vraca omjer tamnih i svijetlih pixela (crno-bjelo) gleda sve pixele u
 %zadanom intervalu.
 %povratni parametri: feature_value : vrijednost omjera (double)
@@ -14,8 +14,8 @@ function [feature_value, countBlack, countWhite] = ...
 %                                     kojeg cemo uzeti u obzir
 %Primjer koristenja:
 %        A = imread(picture)
-%        interval_black = [20,25,20]    /najcesca za crnu
-%        interval_white = [160,155,155] /najcesca za svikasto bjelu
+%        interval_black = [5,5,5]    /najcesca za crnu
+%        interval_white = [250,250,250] /najcesca za svikasto bjelu
 %        precision = 5*ones(1,3)          /interval sirine 5 oko zadanog
 %        [x, bc, wc] = ratio_black_white(A, interval_black,.....)
 
@@ -32,3 +32,4 @@ function [feature_value, countBlack, countWhite] = ...
     % low level feature
     feature_value = countWhite/countBlack;
 end
+%end-----------------------------------------------------------------------

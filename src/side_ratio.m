@@ -1,11 +1,10 @@
 function ratio = side_ratio(image)
-%Function that receives image in RGB format. It converges it into Grayscale format and then
-%returns the ratio of its sides.
+% Funnkcija koja vraca omjer stranica
+% Ulazni parameri -> image : slika u rgb formatu
+% Izlazni parametri -> ratio : omjer stranica
 
-I = rgb2gray(image);
-
-[x,y] = size(I);
-
-ratio = y/x;
-
+    I = rgb2gray(image);
+    [x,y] = size(I);
+    ratio = y/x;
 end
+%end-----------------------------------------------------------------------

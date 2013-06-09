@@ -1,4 +1,8 @@
 function [letters,number] = ocr(imagen)
+% Funcija koja pokusava prepoznati slova i brojke sa slike
+% Ulazni parametri -> image : slika u rgb formatu
+% Izlazni parametri -> letters : broj slova
+%                   -> number  : broj brojeva
 
     % ako je u boji konvertiraj u crno-bjelo
     if size(imagen,3)==3 % ako je ovo onda je crno-bjela
@@ -40,7 +44,7 @@ function [letters,number] = ocr(imagen)
             word=[word letter];
         end
         
-        % @TODO Pokusati sloziti bolji uvjet
+        % uvjet za brojanje slova
         number = 0;
         letters = 0;
         for i=1:length(word)
@@ -64,3 +68,4 @@ function [letters,number] = ocr(imagen)
         end    
     end
 end
+%end-----------------------------------------------------------------------

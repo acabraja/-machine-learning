@@ -14,4 +14,4 @@ function [ standard_format, gray_format ] = picture_in_matrix(name, set, ext)
     standard_format = imread(full_name, ext);
     gray_format = rgb2gray(standard_format);
 end
- 
+%end-----------------------------------------------------------------------

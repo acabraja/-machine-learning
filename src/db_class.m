@@ -1,5 +1,6 @@
 classdef db_class
-    
+% Klasa za povezivanje s bazom podataka
+
     properties
         conn;
     end
