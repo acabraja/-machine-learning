@@ -10,5 +10,5 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
 ## Struktura datoteka
 
 *src (izvorni kod)
- -ocr
- -create_feature
+ +ocr
+ +create_feature
