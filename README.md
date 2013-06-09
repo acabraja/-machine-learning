@@ -1,4 +1,14 @@
--machine-learning
+Automatsko prepoznavanje tablica metodama strojnog učenja
 =================
 
-machine learning, computer vision, object detection, regression models, classification
+*Problem klasifikacije
+*Neuronske mreže
+*Odabir značajki
+*Prikupljanje podataka
+*Testiranje
+
+## Struktura datoteka
+
+*src (izvorni kod)
+ -ocr
+ -create_feature
