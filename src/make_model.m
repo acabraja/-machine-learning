@@ -4,7 +4,7 @@ function [Theta, result] = make_model(L,db_data)
 %result je broj netočno klasificiranih primjera iz skupa za učenje
 
 %load sql_data.mat
-feature_size = 8; 
+feature_size = 13; 
 %db_data1 = zeros(size(db_data),1);
 for j=1:length(db_data)
     r = randi([1,length(db_data)],1);

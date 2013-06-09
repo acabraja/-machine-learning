@@ -65,9 +65,19 @@ fprintf('Za nastavak pritisnite enter...........\n');
 pause;
 %2. verzija neuronske mreze 
 % k-fold cross validacija 
+% TODO treba implementirati
 
-
-
-
+%ostala testiranja
+%testiranje na 2 po 2 featura radi nekih korisnih podataka
+fprintf('Testiranje linearnog regresijskog modela\n')
+prvi_drugi = gradient(X(:,1:2),y)
+treci_cetvrti = gradient(X(:,3:4),y)
+peti_sesti = gradient(X(:,5:6),y)
+sedmi_osmi = gradient(X(:,7:8),y)
+deveti_deseti = gradient(X(:,9:10),y)
+jed_dvan = gradient(X(:,11:12),y)
+fprintf('Za kraj pritisnite enter\n');
+pause;
+close all;
 %Testiranje ostalo
 %

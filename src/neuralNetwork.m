@@ -8,7 +8,7 @@ targets = y';
 hiddenLayerSize = 10;
 net = patternnet(hiddenLayerSize);
 net.name = '0-1 classification';
-%net.layers{1}.transferFcn = 'logsig';
+net.layers{1}.transferFcn = 'purelin';
 %net.layers{2}.transferFcn = 'logsig';
 % Izabrati input output preprocesing funkcije
 % For a list of all processing functions type: help nnprocess
@@ -19,7 +19,7 @@ net.outputs{2}.processFcns = {'removeconstantrows','mapminmax'};
 % Postavljane parametra za djeljenje podataka na Test, Validaciju, Trening
 % For a list of all data division functions type: help nndivide
 net.divideFcn = 'dividerand';  % Divide data randomly
-net.divideMode = 'sample';  % Divide up every sample
+%net.divideMode = 'sample';  % Divide up every sample
 net.divideParam.trainRatio = 75/100;
 net.divideParam.valRatio = 15/100;
 net.divideParam.testRatio = 10/100;
@@ -55,7 +55,7 @@ valPerformance = perform(net,valTargets,outputs)
 testPerformance = perform(net,testTargets,outputs)
 
 % View the Network
-view(net)
+%view(net)
 
 % Plots
 % Uncomment these lines to enable various plots.
