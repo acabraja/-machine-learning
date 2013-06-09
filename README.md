@@ -203,10 +203,10 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
 > smo uzeli kao format iz kojeg ćemo ekstrahirati podatke. 
 
 ##### Traženje određenih boja i njihovih omjera
-> Postoji funkcija <code> pixel_interval_count </code> koja za sliku u rgb formatu vraća 
-> koliko jea boja zastupljena. Boju zadajemo u rgb formatu te zadajemo dozvoljeni interval 
+> Postoji funkcija <code> pixel_interval_count </code> koja za sliku u rgb formatu vraća. 
+> koliko je koja boja zastupljena. Boju zadajemo u rgb formatu te zadajemo dozvoljeni interval 
 > za koji smatramo da je zapravo ista boja.
-> Korišteno za traženje crvene, plave, zelene, crne i bijele
+> Korišteno za traženje crvene, plave, zelene, crne i bijel.
 
 ##### Pretvorba u BW format
 > Poziv funkcije <code> bw </code>
@@ -220,13 +220,13 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
 
 
 ##Dokumentacija i preuzimanje ukratko
-> Preuzeti zip direktorija. Taj tip dekompresirati i nakon pokretanja matlaba pozicionirati se u direktorij
-> Za jednostavno pokretanje pokrenuti u matlabu <code> run_classification </code>
-> Za naprednije korištenje pogledati prethodna objašnjenja i komentare u kodu. Komentari posebno bitni da se vide ulazni i povratni parametri
+> Preuzeti zip direktorija. Taj zip dekompresirati i nakon pokretanja matlaba pozicionirati se u direktorij.
+> Za jednostavno pokretanje pokrenuti u matlabu <code> run_classification </code>.
+> Za naprednije korištenje pogledati prethodna objašnjenja i komentare u kodu. Komentari posebno bitni da se vide ulazni i povratni parametri.
 > Za pregled teorijske pozadine i nekih rezultata na testnom skupu (koji se također nalazi u sklopu projekta) pogledati dokumentaciju.
-> Dokumentacija se nalazi u <code> static/clanak </code>
+> Dokumentacija se nalazi u <code> static/clanak </code>.
 
 
-Sve uocene greske možete nam proslijediti na mail
+Sve uočene greške možete nam proslijediti na mail
 
 A.Čabraja i A.Grbić
