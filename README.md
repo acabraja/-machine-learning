@@ -11,5 +11,18 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
 
 * src (izvorni kod)
  + ocr
- + createfeature
+ + createFeature
  + runClassification
+ + sigmoidFunction
+ + neuralNetwork
+ * ostali pomocne datoteke
+* static
+  + baza slika
+  + kod za sql bazu podataka
+  + neka testiranja
+
+
+## Kako koristiti
+
+Korištenje je predviđeno pokretanjem skripte run_classification
+
