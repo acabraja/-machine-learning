@@ -44,75 +44,73 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
   + Neuronsku mrežu smo kreirali korištenjem gotovog matlab alata. Matlab posjeduje strukturu za neuronske mreže koja prilikom inicijalizacije izgleda ovako:
   <pre>
     <code>
-    
-    Neural Network
- 
+          
               name: 'Custom Neural Network'
         efficiency: .cacheDelayedInputs, .flattenTime,
                     .memoryReduction
           userdata: (your custom info)
  
-    dimensions:
+        dimensions:
  
          numInputs: 0
          numLayers: 0
         numOutputs: 0
-    numInputDelays: 0
-    numLayerDelays: 0
- numFeedbackDelays: 0
- numWeightElements: 0
+        numInputDelays: 0
+        numLayerDelays: 0
+        numFeedbackDelays: 0
+        numWeightElements: 0
         sampleTime: 1
  
-    connections:
+        connections:
  
-       biasConnect: []
-      inputConnect: []
-      layerConnect: []
-     outputConnect: []
+        biasConnect: []
+        inputConnect: []
+        layerConnect: []
+        outputConnect: []
  
-    subobjects:
+        subobjects:
  
             inputs: {0x1 cell array of 0 inputs}
             layers: {0x1 cell array of 0 layers}
            outputs: {1x0 cell array of 0 outputs}
             biases: {0x1 cell array of 0 biases}
-      inputWeights: {0x0 cell array of 0 weights}
-      layerWeights: {0x0 cell array of 0 weights}
+        inputWeights: {0x0 cell array of 0 weights}
+        layerWeights: {0x0 cell array of 0 weights}
  
-    functions:
+        functions:
  
           adaptFcn: (none)
         adaptParam: (none)
           derivFcn: 'defaultderiv'
          divideFcn: (none)
-       divideParam: (none)
+        divideParam: (none)
         divideMode: 'sample'
            initFcn: 'initlay'
         performFcn: 'mse'
-      performParam: .regularization, .normalization
+        performParam: .regularization, .normalization
           plotFcns: {}
         plotParams: {1x0 cell array of 0 params}
           trainFcn: (none)
         trainParam: (none)
  
-    weight and bias values:
+        weight and bias values:
  
                 IW: {0x0 cell} containing 0 input weight matrices
                 LW: {0x0 cell} containing 0 layer weight matrices
                  b: {0x1 cell} containing 0 bias vectors
  
-    methods:
+          methods:
  
              adapt: Learn while in continuous use
-         configure: Configure inputs & outputs
+           configure: Configure inputs & outputs
             gensim: Generate Simulink model
               init: Initialize weights & biases
            perform: Calculate performance
                sim: Evaluate network outputs given inputs
              train: Train network with examples
               view: View diagram
-       unconfigure: Unconfigure inputs & outputs
+          unconfigure: Unconfigure inputs & outputs
  
-    evaluate:       outputs = net(inputs)
+          evaluate:       outputs = net(inputs)
     </code>
   <pre>
