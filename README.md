@@ -124,11 +124,11 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
 > Sljedeći kod predstavlja realizaciju ocr-a preko gotovih funkcija preuzetih sa interneta
 <pre>
  <code>
-  function [letters,number] = ocr(imagen)
-% Funcija koja pokusava prepoznati slova i brojke sa slike
-% Ulazni parametri -> image : slika u rgb formatu
-% Izlazni parametri -> letters : broj slova
-%                   -> number  : broj brojeva
+    function [letters,number] = ocr(imagen)
+    % Funcija koja pokusava prepoznati slova i brojke sa slike
+  % Ulazni parametri -> image : slika u rgb formatu
+  % Izlazni parametri -> letters : broj slova
+  %                   -> number  : broj brojeva
 
     % ako je u boji konvertiraj u crno-bjelo
     if size(imagen,3)==3 % ako je ovo onda je crno-bjela
@@ -193,8 +193,7 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
             break
         end    
     end
-end
-%end-----------------------------------------------------------------------
+    end
+    %end-----------------------------------------------------------------------
  </code>
 </pre>
->
