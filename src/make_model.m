@@ -1,12 +1,12 @@
-function [Theta, result] = make_model(L)
+function [Theta, result] = make_model(L,db_data)
 %Adaboost algoritam koji za ulazni parametar L stvara L slabih klasifikatora da bi dobio jaki klasifikator.
 %result je broj netočno klasificiranih primjera iz skupa za učenje
 
-load sql_data.mat
+%load sql_data.mat
 feature_size = 8; 
-
+%db_data1 = zeros(size(db_data),1);
 for j=1:length(db_data)
-    r = randint(1,1,[1,length(db_data)]);
+    r = randi([1,length(db_data)],1);
     db_data1(j,:) = db_data(r,:);
 end
 
@@ -18,8 +18,8 @@ Theta = zeros(feature_size,L);
 %--------------------------------------------------------------------
 %prvi klasifikator
 [X,y] = create_feature(db_data1);
+X = [ones(size(X,1),1), X];
 [theta,J] = gradient(X,y);
-
 m = nnz(y);
 l = length(y) - m;
 
@@ -60,6 +60,7 @@ Theta(:,1) = theta';
 for i=2:L
  
     [X,y] = create_feature(db_data1);
+    X = [ones(size(X,1),1), X];
     [theta,J] = gradient(X,y);
     
     if(i ~= L)
@@ -91,6 +92,7 @@ alpha = log(alpha);
 
 %izracun za vrijednosti iz db_data stvorenog klasifikatora
 [X,y] = create_feature(db_data);
+X = [ones(size(X,1),1), X];
 rez = zeros(length(y),1);
 
 for i=1:length(db_data1)

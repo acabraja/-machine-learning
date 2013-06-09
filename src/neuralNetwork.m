@@ -5,10 +5,11 @@ inputs = X';
 %size inputs
 targets = y';
 % Create a Pattern Recognition Network
-hiddenLayerSize = 15;
+hiddenLayerSize = 10;
 net = patternnet(hiddenLayerSize);
 net.name = '0-1 classification';
-
+%net.layers{1}.transferFcn = 'logsig';
+%net.layers{2}.transferFcn = 'logsig';
 % Izabrati input output preprocesing funkcije
 % For a list of all processing functions type: help nnprocess
 net.inputs{1}.processFcns = {'removeconstantrows','mapminmax'};
@@ -19,9 +20,9 @@ net.outputs{2}.processFcns = {'removeconstantrows','mapminmax'};
 % For a list of all data division functions type: help nndivide
 net.divideFcn = 'dividerand';  % Divide data randomly
 net.divideMode = 'sample';  % Divide up every sample
-net.divideParam.trainRatio = 60/100;
-net.divideParam.valRatio = 20/100;
-net.divideParam.testRatio = 20/100;
+net.divideParam.trainRatio = 75/100;
+net.divideParam.valRatio = 15/100;
+net.divideParam.testRatio = 10/100;
 
 % algoritam za treniranje neuronske mreže
 % For a list of all training functions type: help nntrain

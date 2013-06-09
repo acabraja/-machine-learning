@@ -4,16 +4,16 @@ function [ X, y ] = create_feature( db_data )
 % Vraca kreirane matrice X i y
 
     % osnovne varijable
-    M = 7; % broj featura
+    M = 8; % broj featura
     N = length(db_data); % broj podataka koje treba obraditi
     y = zeros(N,1);
     x1 = zeros(N,1);
     x2 = zeros(N,1);
-    X = zeros(N,M+1);
+    X = zeros(N,M);
 
     % varijable za 1.
-    black_interval = [25,25,25];
-    white_interval = [155,155,155];
+    black_interval = [20,20,25];
+    white_interval = [155,160,155];
     precision = [10,5,10];
     
     % varijable za 2.
@@ -23,27 +23,37 @@ function [ X, y ] = create_feature( db_data )
     % varijable za 3.
     x5 = zeros(N,1);
     x6 = zeros(N,1);
+    load_data = importdata('count_num_let.txt');
     
     % varijable za 4.
     x7 = zeros(N,1);
     
+    % varijable za 5.
+    x8 = zeros(N,1);
+    
     % za svaku sliku odredi feature 
     for i =1:N;
-        slika = picture_in_matrix(db_data(i,1),'tablice',db_data(i,2));
+        image = picture_in_matrix(db_data(i,1),'tablice',db_data(i,2));
     
         % 1. broj tamnih i svijetlih pixela
         [~,x1(i),x2(i)] = ...
-            ratio_black_white(slika,black_interval,white_interval,precision);
+            ratio_black_white(image,black_interval,white_interval,precision);
         %------------------------------------------------------------------
         % 2. broj slova i brojeva 
-        [x3(i), x4(i)] = ocr(slika);
+        %[x3(i), x4(i)] = ocr(image);
+        x3(i) = load_data(i,1);
+        x4(i) = load_data(i,2);
         %------------------------------------------------------------------
         %3. slika kao binarana (0,1)
-        [x5(i), x6(i)] = bw(slika);
+        [x5(i), x6(i)] = bw(image);
         %------------------------------------------------------------------
         %4. Omjer stranica 
-        x7(i) = side_ratio(slika);
+        x7(i) = side_ratio(image);
         %------------------------------------------------------------------
+        %5. Detekcija kutova ( kod vecih slova vise detektiranih kutova)
+        x8(i) = picture_corresponding(image);
+        %------------------------------------------------------------------
+        
         % Binarni vektor y za ispravno neispravno
         ispravnost = char(db_data(i,3));
         if  (strcmp(ispravnost,'ispravna'))
@@ -60,5 +70,5 @@ function [ X, y ] = create_feature( db_data )
     end
     
     % Kreiranje matrice X sa sredjenim featurima
-    X = [x1, x2, x3, x4, x5, x6,x7];
+    X = [x1, x2, x3, x4, x5, x6,x7,x8];
 end

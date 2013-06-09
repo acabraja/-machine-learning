@@ -4,7 +4,9 @@ function [J, grad] = costFunction(theta, X, y, lambda)
     m = length(y); 
     J = 0;
     grad = zeros(size(theta));
-
+    size(theta);
+    size(X)
+    
     pred = sigmoid(X*theta);
     reg = theta'*theta;
     reg = reg - theta(1)^2;

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 11, 2013 at 02:48 PM
+-- Generation Time: Jun 09, 2013 at 04:09 AM
 -- Server version: 5.5.31-0ubuntu0.13.04.1
 -- PHP Version: 5.4.9-4ubuntu2
 
@@ -109,7 +109,63 @@ INSERT INTO `tablice` (`id`, `extension`, `opis`) VALUES
 (69, 'jpg', 'neispravan'),
 (70, 'jpg', 'neispravna'),
 (71, 'jpg', 'neispravan'),
-(72, 'jpg', 'neispravna');
+(72, 'jpg', 'neispravna'),
+(73, 'jpg', 'ispravna'),
+(74, 'jpg', 'ispravna'),
+(75, 'jpg', 'ispravna'),
+(76, 'jpg', 'ispravna'),
+(77, 'jpg', 'ispravna'),
+(78, 'jpg', 'ispravna'),
+(79, 'jpg', 'ispravna'),
+(80, 'jpg', 'ispravna'),
+(81, 'jpg', 'ispravna'),
+(82, 'jpg', 'ispravna'),
+(83, 'jpg', 'ispravna'),
+(84, 'jpg', 'ispravna'),
+(85, 'jpg', 'ispravna'),
+(86, 'jpg', 'ispravna'),
+(87, 'jpg', 'ispravna'),
+(88, 'jpg', 'ispravna'),
+(89, 'jpg', 'ispravna'),
+(90, 'jpg', 'ispravna'),
+(91, 'jpg', 'ispravna'),
+(92, 'jpg', 'ispravna'),
+(93, 'jpg', 'ispravna'),
+(94, 'jpeg', 'ispravna'),
+(95, 'jpeg', 'ispravna'),
+(96, 'jpeg', 'ispravna'),
+(97, 'jpeg', 'ispravna'),
+(98, 'jpeg', 'ispravna'),
+(99, 'jpeg', 'ispravna'),
+(100, 'jpeg', 'ispravna'),
+(101, 'jpeg', 'ispravna'),
+(102, 'jpeg', 'ispravna'),
+(103, 'jpeg', 'ispravna'),
+(104, 'jpeg', 'neispravna'),
+(105, 'jpeg', 'ispravna'),
+(106, 'jpeg', 'ispravna'),
+(107, 'jpeg', 'ispravna'),
+(108, 'jpeg', 'ispravna'),
+(109, 'jpeg', 'ispravna'),
+(110, 'jpeg', 'neispravna'),
+(111, 'jpeg', 'ispravna'),
+(112, 'jpeg', 'neispravna'),
+(113, 'jpeg', 'neispravna'),
+(114, 'jpeg', 'ispravna'),
+(115, 'jpeg', 'ispravna'),
+(116, 'jpeg', 'ispravna'),
+(117, 'jpeg', 'ispravna'),
+(118, 'jpeg', 'neispravna'),
+(119, 'jpeg', 'neispravna'),
+(120, 'jpeg', 'ispravna'),
+(121, 'jpeg', 'ispravna'),
+(122, 'jpeg', 'ispravna'),
+(123, 'jpeg', 'neispravna'),
+(124, 'jpeg', 'neispravna'),
+(125, 'jpeg', 'ispravna'),
+(126, 'jpeg', 'ispravna'),
+(127, 'jpeg', 'ispravna'),
+(128, 'jpeg', 'neispravna');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
