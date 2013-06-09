@@ -1,3 +1,4 @@
+
 function g = sigmoid(z)
 % aktivacijska funkcija sigmoid
 
