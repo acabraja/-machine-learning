@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 09, 2013 at 04:09 AM
+-- Generation Time: Jun 10, 2013 at 10:22 PM
 -- Server version: 5.5.31-0ubuntu0.13.04.1
 -- PHP Version: 5.4.9-4ubuntu2
 
@@ -165,7 +165,29 @@ INSERT INTO `tablice` (`id`, `extension`, `opis`) VALUES
 (125, 'jpeg', 'ispravna'),
 (126, 'jpeg', 'ispravna'),
 (127, 'jpeg', 'ispravna'),
-(128, 'jpeg', 'neispravna');
+(128, 'jpeg', 'neispravna'),
+(129, 'jpg', 'ispravna'),
+(130, 'jpg', 'neispravan'),
+(131, 'jpg', 'neispravna'),
+(132, 'jpg', 'ispravna'),
+(133, 'jpg', 'neispravna'),
+(134, 'jpg', 'neispravna'),
+(135, 'JPG', 'ispravna'),
+(136, 'jpg', 'ispravna'),
+(137, 'jpg', 'ispravna'),
+(138, 'jpg', 'ispravna'),
+(139, 'jpg', 'ispravna'),
+(140, 'jpg', 'ispravna'),
+(141, 'jpg', 'ispravna'),
+(142, 'jpg', 'ispravna'),
+(143, 'jpg', 'ispravna'),
+(144, 'jpg', 'ispravna'),
+(145, 'jpg', 'ispravna'),
+(146, 'jpg', 'neispravna'),
+(147, 'jpg', 'ispravna'),
+(148, 'jpg', 'ispravna'),
+(149, 'jpg', 'ispravna'),
+(150, 'jpg', 'neispravan');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
