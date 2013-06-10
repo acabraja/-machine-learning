@@ -27,7 +27,7 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
 
  Korištenje je predviđeno pokretanjem skripte run_classification
 
-#### Onovni koraci skripte i čitanje baze
+#### Osnovni koraci skripte i čitanje baze
 > Nakon pokretanja skripte potrebno je pratiti nekoliko koraka.
 > Prvi bitni korak da se odabere učitavanje iz baze ili se koriste već učitani primjeri.
 > U slučaju da niste instalirali bazu podataka na prvi upit odgovorite sa 0.
