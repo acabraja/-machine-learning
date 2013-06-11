@@ -18,7 +18,7 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
 
 ## Struktura datoteka
 * src (izvorni kod)
- * [ocr klasifikator](#ocr)
+ + [ocr klasifikator](#ocr)
     - [templates.mat](#ocr)
     - [lines.m](#ocr)
     - [read_letter](#ocr)
@@ -45,7 +45,7 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
   + [dokumentacija](#clanak)
 
 
-### Problem klasifikacije 
+### <a id = "klasifikacija"></a>"Problem klasifikacije 
  Kada promatramo dani problem lako je uočiti da se radi o binarnom klasifikacijskom problemu. To je problem svrstavanja objekta sa danim značajkama u klasu kojoj pripada.
  U teoriji strojnog učenja, u kojoj naš problem promatramo, ovaj tip spada pod metode nadzornog učenja. Razlog tomu je što će za sve testne i trening primjere biti zadana
  target varijabla ( u našem slučaju binarna).
