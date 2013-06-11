@@ -13,15 +13,12 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
 3. [Prikupljanje podataka](#prikupljanje-podataka)
 4. [Odabir značajki](#odabir-znaajki)
 5. [Testiranje](#testiranje)
-6. [Korištenje](#koritenje)
+6. [Pokretanje u matlabu](#pokretanje-u-matlabu)
 7. [Pisanje članka](#lanak)
 
 ## Struktura datoteka
 * src (izvorni kod)
  + [ocr klasifikator](#ocr)
-    - [templates.mat](#ocr)
-    - [lines.m](#ocr)
-    - [read_letter](#ocr)
  + [create_feature.m](#znacajke)
  + [run_classification.m](#pokretanje)
  + [neuralNetwork.m](#nn)
@@ -32,15 +29,15 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
  + [side_ratio](#znacajka5)
  + [db_class.m](#klasa)
  + [picture_in_matrix.m](#citanje-slika)
- + make_model.m
- + sigmoid.m
- + costFunction.m
+ + [make_model.m]()
+ + [sigmoid.m]()
+ + [costFunction.m]()
  + [plotData.m](#crtanje)
  + [sql_data.mat](#ucitani podaci)
  + [X.mat i y.mat](#mat-znacajke)
 * static
   + [baza sa slikama](#podaci)
-  + kod za sql bazu podataka
+  + [kod za sql bazu podataka]()
   + [primjeri testiranja](#testiranje)
   + [dokumentacija](#clanak)
 
@@ -76,121 +73,36 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
 Svi primjeri , nih 150 se nalazi u direktoriju <code>static/test-set/tablice </code>. Podaci su većinom mormalizirani što znači ekstrahirani su iz većih slika te je na većini njih okolni 
 šum sveden na minimum. U bazi se nalazi oko 100 slika na kojima se nalaze tablice te 50-ak slika na kojima su razni drugi objekti sličnih karakteristikam kao naprimjer, reklame, putokazi, znakovi. Svi podaci su prikupljeni ručno i prema vlastitom navođenu podjeljeni u skup za cross-Validaciju i testni skup. Podjela je takva da u testni skup spadaju one slike čiji je indeks > 128.
 Sve slike u bazi su numerirane od 1 do 150 i to im ujedno predstavlja i ime i id odnosno indeks. Prilikom prikupljanja podataka najveći problem je bio kut slikanja te tako imamo slike iz različitih kutova ali otprilike iste kvalitete. SA određenim značajkama ćemo pokušati taj problem svesti na jednu značajku reprezentiranu sa jednom realnom vrijednošću.
-Primjer nekih slika iz baze :<br/>
-[slika1](static/test_set/tablice/133.jpg)
-[slika2](static/test_set/tablice/129.jpg)
-[slika3](static/test_set/tablice/144.jpg)
-[slika4](static/test_set/tablice/33.jpg)
-
-
+Primjer nekih podataka iz baze:
+![slika1](https://github.com/acabraja/-machine-learning/tree/master/static/test-set/tablice/12.jpg)
 ### Odabir značajki
 
 
-## Kako koristiti 
+## Pokretanje u matlabu 
 
- Korištenje je predviđeno pokretanjem skripte run_classification
+ Korištenje je predviđeno pokretanjem skripte run_classification. Postoji i mogućnost pokretanja dijelova koda odnosno zasebno pokretanje svih funkcija. 
+ Da pi se korištenje bez predviđene skripte ostvarilo potrebno je loadati podatke iz <code> X.mat, y.mat, sql_data.mat</code>.
 
-#### Osnovni koraci skripte i čitanje baze
-> Nakon pokretanja skripte potrebno je pratiti nekoliko koraka.
-> Prvi bitni korak da se odabere učitavanje iz baze ili se koriste već učitani primjeri.
-> U slučaju da niste instalirali bazu podataka na prvi upit odgovorite sa 0.
-> Nastavak korištenja je jednostavno prema uputama nekoliko puta stisnuti enter.
+#### Skripta run_classification
+Prilikom pokretanja skripta nudi dvije mogućnosti. Prva mogućnost je da upisete 0 ili samo pritisnete enter čime pokrećete čitanje svih pdataka iz .mat datoteka. Ovo je jednostaviji
+način korištenja i ne zahtijeva [instaliranje](#baza) baze. Instalacija baze i spajanje na bazu je za potrebe daljnjeg razvoja. Mogućnost spajanja na bazu ostvaruje se upisivanjem 1 u prvom koraku skripte nakon čega je potrebno unijeti neke podatke za spajanje na mysql bazu. Nakon nekoliko trenutaka podaci će biti učitani i spremni za korištenje. Skripta je dizajnirana tako da 
+između koraka očekuje da korisnik pritisne neku tipku na tipkovnici. Nakon učitavnja podatka sljedeći korak je računanje i traženje značajki za sve slike u bazi te vizualizacija nekih podataka u obliku matlab plot figure. <br/>
+Nakon inicjalizacije i upoznavanjem sa podacima sljedi inicijalizacija modela neuronske mreže i pokretanje učenja neuronske mreže. Postoje dvije verzije na kojima je testirano te će se one izvoditi redom. Prva verzija je neuronska mreža sa slučajnim odabirom skupa za validaciju testiranje i učenje na osnovu zadanog postotka . 70% učenje po 15% validacija i test. Korisnik samo treba pričekati dok mu se ne pojavi sučelje i pratitit događanja u iteracijama algoritma. Na kraju sučelje nudi i mogućnosti iscrtavanja svih korisnih grafova što omogućuje pregled sposobnosti danog modela. Nakon toga moguće je pokrenuti i drugu verziju sa cross-validacijom. Kao i u prvom slučaju korisnik treba samo pričekati i poslije će sučelje biti dovoljno jasno za upotrebu. Sučelje će kao i u prvom slučaju iscrtati sve grafove koji će se prikazati na zaslonu te će se lako moći vidjeti kako se odnosi mjenjaju sa mjenjanjem skupa za učenje i validaciju.
+Zadnja mogućnost koju skripta nudi, trenutno nije završena, bazira se na modelu procijene odnosa između dvije značajke pomoću linearne regresije. Ovoj korak je u skripti jer služi za daljni razvoj algoritama van okvira kolegija zbog kojeg je projekt nastao.
 
-#### Evaluacijski koraci općenito
- * Nakon što se u 2. koraku evaliraju značajke na ekranu bi se trebala prikazati slika nekih odabranih značajki
- * Nakon što se u 3. koraku evaluira neuronska mreža na zaslonu se treba ponuditi GUI sučelje sa iscrtavanjem grafova
- i greškama u učenju, kao i matrica konfuzije.
- * Zadnji korak prije kraja programa je početak razvoja novog algoritma baziranog na linearnoj regresiji između manjeg
- broja značajki.
+#### Preuzimanje
+Preuzeti zip direktorij sa github-a te ga raspakirati. S matlabom se pozicionirati u src direktorij unutar projekta i nakon toga je sve spremno za korištenje.
 
-## O funkcijama za značajke i kreiranju neuronske mreže
 #### Kreiranje neuronske mreže
-> 
-> 
->    
->  U ovo mrežu je potrebno postaviti određene parametre da bi se mogle koristiti metode.
->  U matlab datoteci <code> neuralNetwork.m </code> je dokumentirani primjer sa svim popunjenim parametrima 
+
+ U ovo mrežu je potrebno postaviti određene parametre da bi se mogle koristiti metode.
+ U matlab datoteci <code> neuralNetwork.m </code> je dokumentirani primjer sa svim popunjenim parametrima 
 
 #### OCR
 > također smo koristili gotovo OCR rješenje za prepoznavanje slova i brojeva na tablici. 
 > Sa algoritmom smo dobili <code> template.m </code> podatkovnu datoteku u kojoj su značajke za model slova i brojeva.
 > Naš zadatak je bio implementirati OCR strukturu korištenjem kodovih algoritama.
 > Sljedeći kod predstavlja realizaciju ocr-a preko gotovih funkcija preuzetih sa interneta
-<pre>
- <code>
-    function [letters,number] = ocr(imagen)
-    % Funcija koja pokusava prepoznati slova i brojke sa slike
-  % Ulazni parametri -> image : slika u rgb formatu
-  % Izlazni parametri -> letters : broj slova
-  %                   -> number  : broj brojeva
-
-    % ako je u boji konvertiraj u crno-bjelo
-    if size(imagen,3)==3 % ako je ovo onda je crno-bjela
-        imagen=rgb2gray(imagen);
-    end
-
-    % konvertiraj u BW
-    threshold = graythresh(imagen);
-    imagen =~im2bw(imagen,threshold);
-
-    % Obrise sve objekte manje od 30 pixela
-    imagen = bwareaopen(imagen,30);
-
-    %Inicijalizacija varijabli
-    word=[ ];
-    re=imagen;
-
-    % ucitaj template
-    %load templates
-    global templates
-    load templates
-    % zbroj znakova u testnom skupu
-    num_letras=size(templates,2);
-
-    while 1
-        % Analiza svake prepoznate rijeci
-        [fl,re]=lines(re);
-        imgn=fl;
-        [L,Ne] = bwlabel(imgn);    
-        for n=1:Ne
-            [r,c] = find(L==n);
-            % izdvoji slovo
-            n1=imgn(min(r):max(r),min(c):max(c));  
-            % reskaliraj znak tako da se slaže sa testnim velicinam
-            img_r=imresize(n1,[42 24]);
-            % prebaci iz slike u znak
-            letter=read_letter(img_r,num_letras);
-            % spoji u rjec
-            word=[word letter];
-        end
-        
-        % uvjet za brojanje slova
-        number = 0;
-        letters = 0;
-        for i=1:length(word)
-            if(strcmp(word(i),'0') || ...
-                    strcmp(word(i),'1') || strcmp(word(i),'2') || ...
-                    strcmp(word(i),'3') || strcmp(word(i),'4') || ...
-                    strcmp(word(i),'5') || strcmp(word(i),'6') || ...
-                    strcmp(word(i),'7') || strcmp(word(i),'8') || ...
-                    strcmp(word(i),'9'))
-                number = number + 1;
-            else
-                letters = letters + 1;
-            end
-        end
-        % Clear 'word' variable
-        word=[ ];
-    
-        %*When the sentences finish, breaks the loop
-        if isempty(re)  %See variable 're' in Fcn 'lines'
-            break
-        end    
-    end
-    end
-    %end-----------------------------------------------------------------------
- </code>
-</pre>
 
 #### Značajke
 > Postoje funkcije koje su implementacija značajki iz rgb formata slike. Ovaj format
