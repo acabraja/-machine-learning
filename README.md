@@ -8,13 +8,13 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
 
 
 ## Podjela problema i koraci rješavanja
-1. [Problem klasifikacije]()
+1. [Problem klasifikacije](#problem-klasifikacije)
 2. [Neuronske mreže](#neuronska-mrea)
-3. [Odabir značajki](#znacajke)
-4. [Prikupljanje podataka](#podaci)
+3. [Odabir značajki](#odabir-znaajki)
+4. [Prikupljanje podataka](#prikupljanje-podataka)
 5. [Testiranje](#testiranje)
-6. [Korištenje](#upute)
-7. [Pisanje članka](#clanak)
+6. [Korištenje](#koritenje)
+7. [Pisanje članka](#lanak)
 
 ## Struktura datoteka
 * src (izvorni kod)
@@ -51,7 +51,25 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
  target varijabla ( u našem slučaju binarna).
 
 ### Neuronska mreža
- Metoda strojnog učenja koju smo odabrali za kreiranje našeg modela odnosno klasifikatora. 
+ Metoda strojnog učenja koju smo odabrali za kreiranje našeg modela odnosno klasifikatora. Kako je kod realiziran u MATLABU, taj nam software pruža mogućnost izgradnje neuronske
+ mreže kroz definiranje već gotove strukture. Prilikom kreiranja koristili smo izvornu [dokumentaciju](http://www.mathworks.com/help/nnet/functionlist.html).
+ Ukratko ovdje ćemo navesti parametre koje smo postavili te koje smo još mogućnosti imali.
+ Inicijalizacija mreže ostvarena je sljedećim kodom <code> net = network(broj_skrivenih slojeva) </code>. Svaka neuronska mreža se sastoji od ulaznog sloja, skrivenog sloja te izlaznog sloja.
+ Kako možete primjetiti prilikom inicijalizacije potrebno je samo zadati broj skrivenih slojeva jer po predpostavci mreža mora zadržavati ulazni i izlazni sloj. 
+ > Treba istaknuti da ulazni sloj neuronske mreže ne može računati. Računanje kreće tek u skrivenom sloju.
+ Za skrivene slojeve te za izlazni sloj potrebno je definirati aktivacijsku funkciju. To u MATLABU možemo ostvariti sljedećim kodom:<br/>
+ <code> net.layers{1}.transferFcn = 'purelin';</code>. Ovdje 1 predstavlja koji je to sloj te mu dodjeljujemo neku od definiranih funkcija u MATLABU kao što je linearna funkcija (purelin).
+ Također potrebno je odrediti težina za ulaz u svaki neuron neuronske mreže, no u ovom slučaju to će MATLABU riješti postavljanjem na neke slučajne vrijednosti. Postoje i druge metode kako se
+ mogu postaviti početne vrijednosti, ali nama je odgovarala ova unaprijed definirana varijanta. Sintaksa je ista kao i za postavljanje aktivacijske funkcije.
+ Nakon ovih nekoliko jednostavnih koraka već imamo izgrađenu osnovnu neuronsku mrežu. Sada je potrebno pridružiti mreži podatke za učenje, validaciju i testiranje. Kao i za prethodne probleme
+ MATLABU u svojoj strukturi nudi neke od modela podjele podataka na potrebne skupove. Zanimljiva mogućnost je podjela na slučanjan način prema unaprijed definiranom omjeru. Upravo ovaj model 
+ smo prvo koristili. Drugi model koji nam je bio od interesa jest da ručno odredimo koji podaci spadaju u koju grupu. Za ovakav model koristi se funkcija <code> divideint </code>.
+  Ta je funkcija također ugrađena u matlab alat za rad s neuronskim mrežama te smo ju uključili u našu strukturu sljedećim kodoma <code>net.divideFcn = 'divideind';</code>.
+  Kako su podaci spremljeni u veliku matricu X, nas funkcija traži indekse redaka te matrice(kasnije objašnjavamo da su redci primjeri). Ovako definirana meuronska mreža sa funkcijom 
+  <code> divideind </code> je pogodna za kreiranje modela koji koristi [cross-validaciju](http://en.wikipedia.org/wiki/Cross-validation_(statistics)), što će nam  također biti potrebno.
+  Konačno sada imamo mrežu koju možemo trenirati. No kako bi se mreža trenirala potrebno je u svakoj etapi treninga procijeniti grešku i korigirati težine. Podsjetimo se težine su na početku određene na slučajan način i vjerojatnost da su optimalne je vrlo mala stoga nam treba neki algoritam koji će trenirati i koji će procjenjivati grešku. Algoritam kojeg koristimo za treniranje 
+  je [Gradient descent backpropagation.](http://en.wikipedia.org/wiki/Backpropagation). MATLABU nam nudi još mnogo funkcija za treniranje, navedena metoda nam je osnovna metoda i na neuronskoj mreži sa ovom trening funkcijom je provedeno većina istraživanja. No tokom testiranja smo pokušali i sa nekim drugim metodama testiranja kako bi stekli dojam brzine učenja ovisno o algoritmu.
+  Sada je potpuno određena neuronska mreža te ju možemo početi trenirati. To je u MATLABU dosta jednostavno jer postoji funkcija <code> train </code> kojom treniramo mrežu te kao izlaz dobijemo podatke o greški ukupno, o greški na svakom od definiranih skupova posebno, te naravno dobijemo i skup težina za koje je mreža u treningu postigla najbolje rezutlate. Sve navedeno nam je potrebno da bi mogli procijenit preciznost i kontrolirati prenaučenost što su nam glavni ciljevi.
 
 
 ## Kako koristiti 
