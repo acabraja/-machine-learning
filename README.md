@@ -9,7 +9,7 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
 
 ## Podjela problema i koraci rješavanja
 1. [Problem klasifikacije]()
-2. [Neuronske mreže]()
+2. [Neuronske mreže](#neuronska-mreza)
 3. [Odabir značajki](#znacajke)
 4. [Prikupljanje podataka](#podaci)
 5. [Testiranje](#testiranje)
