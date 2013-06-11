@@ -75,9 +75,40 @@ Svi primjeri , nih 150 se nalazi u direktoriju <code>static/test-set/tablice </c
 Sve slike u bazi su numerirane od 1 do 150 i to im ujedno predstavlja i ime i id odnosno indeks. Prilikom prikupljanja podataka najveći problem je bio kut slikanja te tako imamo slike iz različitih kutova ali otprilike iste kvalitete. SA određenim značajkama ćemo pokušati taj problem svesti na jednu značajku reprezentiranu sa jednom realnom vrijednošću.
 
 ### Odabir značajki
+Svaka slika je reprezentirna trodimenzionalnom matricom koja predstavlja rgb format slike. Kako je svaka slika minimalno 60X150 pixela te kako svaki pixel predstavlaju 3 broja, slijedi da je 
+je svaka slika reprezentirana sa otprilike 1500 brojeva. Takva reprezentacija nije pogodna za učenje jer bi vjerojatnost od prenaučenosti bila prevelika. Stoga smo implementirali funkcije koje
+će iz dane matrice za svaku sliku izvući najbitnije podatke. Konkretno za svaku sliku određujemo 12 značajki to jest u našem modelu sliku predstavlja 12 dimenzionalni vektro realnih brojeva.
+Funkcije koje određuju značajke nećemo detaljno opisivati jer su dokumentiranje sa detaljnim objašnjenjem. Navest ćemo značajke i njihovu ulogu, a detaljnije o značajkama možete pronaći 
+u [članku](#lanak).
 
+###### Broj svijetlih i tamnih pixela
+Funkcija <code> pixel_interval_count</code> vraća dvije značajke. Uloga ovih značajki jest u tome što su neke slike "prljave" što znači da 
+ako želimo vidjeti odnose neke dvije boje ovdje konkretno crna i bijela(nisu prave boje ali u ovom kontekstu ćemo govorit da jesu). Sami određujemo
+koliko širok interval neke boje želimo gledati te nam funkcija vrati broj takvih pojavljivanja na slici. Crna i bijela te siva se najčešće javljaju na tablicama dok su 
+ostali objekti šareniji te je broj pojavljivanja ovakvih intervala manji.
 
-## Pokretanje u matlabu 
+###### broj crvenih, plavih i zelenih pixela
+Koristimo istu funkciju kao i za prethodne značajke samo sada tražimo 3 osnovne boje. Primjetili smo da se na stranim tablicama četo pojavljuje jedna od ove 3 boje
+ali gotovo nikad u kombinaciji. Također smo primjetili da se na slikama gdje nisu tablice ove 3 boje gotovo uvijek pojavljuju u svim kombinacijama. Stoga ovau značajku smatramo 
+jako bitnom.
+
+###### Pojavljivanje kutova na slici
+Funkcija <code> picture_corresponding </code> je zadužena za ovaj posao. Vraća broj detektiranih kutova na slici. Razlog uvrštavanja ove značajke je što se na tablicama automobila slova registracija pojavljuju u krupnom planu, te stoga na slikama gdje su tablice uvijek je detektirano više kutova nego na nekim drugim slikama sa obićnim tekstom.
+
+###### Dimenzije slike
+Pošto predpostavljamo da imamo ekstrahirane slike onda možemo reći da je slika približno istih dimenzija ili barem istog oblika kao i objekt na njoj. Ova značajka nije jaka
+ali je korisna kako bi detektirali neke čudne oblike kao što su veći kvadratni oblici koji nikako ne mogu biti tablica. Glavna predpostavka je da su objekti dobro izdvojeni.
+Funkcija koja obavlja traženi posao je <code>side_ratio</code>.
+
+###### Binarna slika
+Funkcija <code>bw</code> pretvara sliku u binarni oblik iz kojeg onda čita broj 0 i broj 1 te traži omjer bjela/crna. Razlog je to što su na tablicama bijela i crna podjednako zastupljene
+a kod odtalih slika prevladava crna kada se pretvori u binarnu sliku. Stoga ova značajka je bitna i jako korisna.
+
+###### OCR
+Određivanje broja slova i broja brojeva koji se pojavljuju na slici. Ovo je najjača značajka koju smo koristili. Tablice u principu imaju odnos brojevi slova 3:4 ili 4:4 ili 4:5 dok je kod svih ostalih objekata ili 0 ili neki veći broj kada se radi o tekstu. Problem kod ove značajke je što funkcija za ekstrahiranje podataka nije jednostavna te sama koristi metode strojnog učenja.
+Nismo implementirali ovaj algoritam nego smo preuzeli gotovo riješenje. Kao moguću nadogradnju našeg projekta želimo stvoriti vlastiti ocr koji će bit specijaliziran za naš slučaj. Naišli smo na mali problem prilikom korištenja OCR-a jer nije točno prepoznavao slova i brojeve. Stoga smo se u konačnici odlučili na predpostavku da imamo savršeni OCR te da su nam podaci koje je vratio potpuno točni. S takvim podacima smo stvorili jaku značaju. Zbog toga nam je prvi korak u daljnjem razvoju projekta naš vlastit OCR.
+
+### Pokretanje u matlabu 
 
  Korištenje je predviđeno pokretanjem skripte run_classification. Postoji i mogućnost pokretanja dijelova koda odnosno zasebno pokretanje svih funkcija. 
  Da pi se korištenje bez predviđene skripte ostvarilo potrebno je loadati podatke iz <code> X.mat, y.mat, sql_data.mat</code>.
@@ -91,45 +122,6 @@ Zadnja mogućnost koju skripta nudi, trenutno nije završena, bazira se na model
 
 #### Preuzimanje
 Preuzeti zip direktorij sa github-a te ga raspakirati. S matlabom se pozicionirati u src direktorij unutar projekta i nakon toga je sve spremno za korištenje.
-
-#### Kreiranje neuronske mreže
-
- U ovo mrežu je potrebno postaviti određene parametre da bi se mogle koristiti metode.
- U matlab datoteci <code> neuralNetwork.m </code> je dokumentirani primjer sa svim popunjenim parametrima 
-
-#### OCR
-> također smo koristili gotovo OCR rješenje za prepoznavanje slova i brojeva na tablici. 
-> Sa algoritmom smo dobili <code> template.m </code> podatkovnu datoteku u kojoj su značajke za model slova i brojeva.
-> Naš zadatak je bio implementirati OCR strukturu korištenjem kodovih algoritama.
-> Sljedeći kod predstavlja realizaciju ocr-a preko gotovih funkcija preuzetih sa interneta
-
-#### Značajke
-> Postoje funkcije koje su implementacija značajki iz rgb formata slike. Ovaj format
-> smo uzeli kao format iz kojeg ćemo ekstrahirati podatke. 
-
-##### Traženje određenih boja i njihovih omjera
-> Postoji funkcija <code> pixel_interval_count </code> koja za sliku u rgb formatu vraća. 
-> koliko je koja boja zastupljena. Boju zadajemo u rgb formatu te zadajemo dozvoljeni interval 
-> za koji smatramo da je zapravo ista boja.
-> Korišteno za traženje crvene, plave, zelene, crne i bijel.
-
-##### Pretvorba u BW format
-> Poziv funkcije <code> bw </code>
-> Binarni format dakle slika je sada 0 ili 1 i predstavlja broj crnih i bijelih pixela.
-> vraća taj broj
-
-##### Traženje značajki na suženoj slici
-> Poziv funkcije <code> ratio_picture_center </code>
-> Funkcija postavlja margine oko slike i sužava sliku za odrećeni postotak
-> Iz slike ekstrahira bw format i omjer bjelih i crnih pixela
-
-
-##Dokumentacija i preuzimanje ukratko
-> Preuzeti zip direktorija. Taj zip dekompresirati i nakon pokretanja matlaba pozicionirati se u direktorij.
-> Za jednostavno pokretanje pokrenuti u matlabu <code> run_classification </code>.
-> Za naprednije korištenje pogledati prethodna objašnjenja i komentare u kodu. Komentari posebno bitni da se vide ulazni i povratni parametri.
-> Za pregled teorijske pozadine i nekih rezultata na testnom skupu (koji se također nalazi u sklopu projekta) pogledati dokumentaciju.
-> Dokumentacija se nalazi u <code> static/clanak </code>.
 
 
 Sve uočene greške možete nam proslijediti na mail
