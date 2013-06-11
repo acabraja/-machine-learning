@@ -56,7 +56,7 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
  Ukratko ovdje ćemo navesti parametre koje smo postavili te koje smo još mogućnosti imali.
  Inicijalizacija mreže ostvarena je sljedećim kodom <code> net = network(broj_skrivenih slojeva) </code>. Svaka neuronska mreža se sastoji od ulaznog sloja, skrivenog sloja te izlaznog sloja.
  Kako možete primjetiti prilikom inicijalizacije potrebno je samo zadati broj skrivenih slojeva jer po predpostavci mreža mora zadržavati ulazni i izlazni sloj. 
- > Treba istaknuti da ulazni sloj neuronske mreže ne može računati. Računanje kreće tek u skrivenom sloju.
+> Treba istaknuti da ulazni sloj neuronske mreže ne može računati. Računanje kreće tek u skrivenom sloju. 
  Za skrivene slojeve te za izlazni sloj potrebno je definirati aktivacijsku funkciju. To u MATLABU možemo ostvariti sljedećim kodom:<br/>
  <code> net.layers{1}.transferFcn = 'purelin';</code>. Ovdje 1 predstavlja koji je to sloj te mu dodjeljujemo neku od definiranih funkcija u MATLABU kao što je linearna funkcija (purelin).
  Također potrebno je odrediti težina za ulaz u svaki neuron neuronske mreže, no u ovom slučaju to će MATLABU riješti postavljanjem na neke slučajne vrijednosti. Postoje i druge metode kako se
