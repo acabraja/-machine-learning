@@ -1,26 +1,49 @@
 Automatsko prepoznavanje tablica metodama strojnog učenja
 =================
+> Ovaj rad je nastao kao rješenje projektnog zadatka iz kolegija [strojno učenje](http://web.math.pmf.unizg.hr/nastava/su/) koji se održava na Prirodoslovno-matematičnom fakultetu u Zagrebu.
+> Naš problem spada u klasu problema prepoznavanja objekata na slikama. Konkretno ovaj rad je baziran na klasifikaciji ekstrahiranih podataka sa slike na kojima se nalaze tablice automobila 
+> ili neki objekti sličnih osobina.Cilj nam je napraviti klasifikator koji će biti sposoban prema naučenom novu sliku uvrstiti u skup kojemu pripada(tablica automobila ili ostalo)
+> Dakle cilj nam je konstruirati klasifikator za zadani [skup podataka](#podaci). Podaci koje koristimo nisu dio nekog standardnog već proučavanog skupa, nego su
+> ručno prikupljeni. Ovo je binarni klasifikacijski problem i može se svrstati u klasu poznatih problema [oneVsAll ili multi klasifikacije](http://en.wikipedia.org/wiki/Multiclass_classification)klasifikacije.
 
-1. Problem klasifikacije
-2. Neuronske mreže
-3. Odabir značajki
-4. Prikupljanje podataka
-5. Testiranje
 
-## Struktura datoteka
+## Podjela problema
+1. [Problem klasifikacije](#klasifikacija)
+2. [Neuronske mreže](#nn)
+3. [Odabir značajki](#znacajke)
+4. [Prikupljanje podataka](#podaci)
+5. [Testiranje](#testiranje)
+6. [Korištenje](#upute)
+7. [Pisanje članka](#clanak)
+
+## Struktura datoteka 
 
 * src (izvorni kod)
- + ocr
- + createFeature
- + runClassification
- + sigmoidFunction
- + neuralNetwork
- * ostali pomocne datoteke
+ + [ocr klasifikator](#ocr)
+    - [templates.mat](#ocr)
+    - [lines.m](#ocr)
+    - [read_letter](#ocr)
+ + [create_feature.m](#znacajke)
+ + [run_classification.m](#pokretanje)
+ + [neuralNetwork.m](#nn)
+ + [picture_corresponding.m](#znacajka1)
+ + [ratio_picture_center.m](#znacajka2)
+ + [pixel_interval_count.m](#znacajka3)
+ + [bw.m](#znacajka4)
+ + [side_ratio](#znacajka5)
+ + [db_class.m](#klasa)
+ + [picture_in_matrix.m](#citanje-slika)
+ + make_model.m
+ + sigmoid.m
+ + costFunction.m
+ + [plotData.m](#crtanje)
+ + [sql_data.mat](#ucitani podaci)
+ + [X.mat i y.mat](#mat-znacajke)
 * static
-  + baza slika
+  + [baza sa slikama](#podaci)
   + kod za sql bazu podataka
-  + neka testiranja
-  + dokumentacija
+  + [primjeri testiranja](#testiranje)
+  + [dokumentacija](#clanak)
 
 
 ## Kako koristiti 
@@ -42,79 +65,9 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
 
 ## O funkcijama za značajke i kreiranju neuronske mreže
 #### Kreiranje neuronske mreže
-> Neuronsku mrežu smo kreirali korištenjem gotovog matlab alata. Matlab posjeduje strukturu za neuronske mreže koja prilikom inicijalizacije izgleda ovako:
->  <pre>
->    <code>
->          
->              name: 'Custom Neural Network'
->        efficiency: .cacheDelayedInputs, .flattenTime,
->                    .memoryReduction
->          userdata: (your custom info)
 > 
->        dimensions:
 > 
->         numInputs: 0
->        numLayers: 0
->        numOutputs: 0
->        numInputDelays: 0
->        numLayerDelays: 0
->        numFeedbackDelays: 0
->        numWeightElements: 0
->        sampleTime: 1
-> 
->        connections:
-> 
->        biasConnect: []
->        inputConnect: []
->        layerConnect: []
->        outputConnect: []
-> 
->        subobjects:
-> 
->            inputs: {0x1 cell array of 0 inputs}
->            layers: {0x1 cell array of 0 layers}
->           outputs: {1x0 cell array of 0 outputs}
->            biases: {0x1 cell array of 0 biases}
->        inputWeights: {0x0 cell array of 0 weights}
->        layerWeights: {0x0 cell array of 0 weights}
-> 
->        functions:
-> 
->          adaptFcn: (none)
->        adaptParam: (none)
->          derivFcn: 'defaultderiv'
->         divideFcn: (none)
->        divideParam: (none)
->        divideMode: 'sample'
->           initFcn: 'initlay'
->        performFcn: 'mse'
->        performParam: .regularization, .normalization
->          plotFcns: {}
->        plotParams: {1x0 cell array of 0 params}
->          trainFcn: (none)
->        trainParam: (none)
-> 
->        weight and bias values:
-> 
->                IW: {0x0 cell} containing 0 input weight matrices
->                LW: {0x0 cell} containing 0 layer weight matrices
->                 b: {0x1 cell} containing 0 bias vectors
-> 
->          methods:
-> 
->             adapt: Learn while in continuous use
->           configure: Configure inputs & outputs
->            gensim: Generate Simulink model
->              init: Initialize weights & biases
->           perform: Calculate performance
->               sim: Evaluate network outputs given inputs
->             train: Train network with examples
->              view: View diagram
->          unconfigure: Unconfigure inputs & outputs
-> 
->          evaluate:       outputs = net(inputs)
->    </code>
->  <pre>
+>    
 >  U ovo mrežu je potrebno postaviti određene parametre da bi se mogle koristiti metode.
 >  U matlab datoteci <code> neuralNetwork.m </code> je dokumentirani primjer sa svim popunjenim parametrima 
 
