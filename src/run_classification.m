@@ -9,13 +9,12 @@ control = input('Za ucitavanje iz baze upisite 1, a za koristenje ucitanih podat
 if (control == 1)
     % Ucitavanje podataka iz baze
     fprintf('Ucitavanje podataka iz baze ....\n');
-    % fprintf('Podatke unosite sa navodnicima\n');
-    % host = input('Unesite host za bazu: ');
-    % user = input('Unesite username za bazu: ');
-    % pass = input('Unesite password za bazu: ');
-    % db = input('Unesite ime baze: ');
-    %conn = db_class(host,user,pass,db);
-    conn = db_class('localhost','root','0981655447','strojno');
+    fprintf('Podatke unosite sa navodnicima\n');
+    host = input('Unesite host za bazu: ');
+    user = input('Unesite username za bazu: ');
+    pass = input('Unesite password za bazu: ');
+    db = input('Unesite ime baze: ');
+    conn = db_class(host,user,pass,db);
     query = 'select * from tablice';
     db_data = conn.db_query(query);
     save ('sql_data','db_data');
