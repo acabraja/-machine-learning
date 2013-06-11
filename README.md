@@ -128,10 +128,10 @@ O radu je napisan članak u kojem su detaljnije iznesei podaci i testiranja algo
 direktoriju se nalaze i slike istraživanja, neuronske mreže, krivulja učenja i svi korisni podaci do kojih smo došli istraživanjem. Kako aktivno provodimo
 istraživanja mogu će su promjene trenutnog stanja u ovom direktoriju.
 
-> ####Baza 
+ ####Baza 
 > U direktorijima je instaliran software pisat u javi koji radi virtualnu konekciju mysql-a i matlaba. Taj software je složen i koristimo ga bez eksplicitnog tedaljnog znanja o njemu
 > U slučaju da se želite uklučiti u razvoj u direktoriju baza možete naći sql datoteku za učitavanje cijele baze u mysql.
 
 
-> Sve uočene greške možete nam proslijediti na mail
+> Sve uočene greške možete nam proslijediti na mail<br/>
 > A.Čabraja i A.Grbić
