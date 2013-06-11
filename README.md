@@ -1,13 +1,13 @@
 Automatsko prepoznavanje tablica metodama strojnog učenja
 =================
-> Ovaj rad je nastao kao rješenje projektnog zadatka iz kolegija [strojno učenje](http://web.math.pmf.unizg.hr/nastava/su/) koji se održava na Prirodoslovno-matematičnom fakultetu u Zagrebu.
+> Ovaj rad je nastao kao rješenje projektnog zadatka iz kolegija [strojno učenje](http://web.math.pmf.unizg.hr/nastava/su/) koji se održava na Prirodoslovno-matematičnom fakultetu u Zagrebu. 
 > Naš problem spada u klasu problema prepoznavanja objekata na slikama. Konkretno ovaj rad je baziran na klasifikaciji ekstrahiranih podataka sa slike na kojima se nalaze tablice automobila 
-> ili neki objekti sličnih osobina.Cilj nam je napraviti klasifikator koji će biti sposoban prema naučenom novu sliku uvrstiti u skup kojemu pripada(tablica automobila ili ostalo)
+> ili neki objekti sličnih osobina.Cilj nam je napraviti klasifikator koji će biti sposoban prema naučenom novu sliku uvrstiti u skup kojemu pripada(tablica automobila ili ostalo). 
 > Dakle cilj nam je konstruirati klasifikator za zadani [skup podataka](#podaci). Podaci koje koristimo nisu dio nekog standardnog već proučavanog skupa, nego su
-> ručno prikupljeni. Ovo je binarni klasifikacijski problem i može se svrstati u klasu poznatih problema [oneVsAll ili multi klasifikacije](http://en.wikipedia.org/wiki/Multiclass_classification)klasifikacije.
+> ručno prikupljeni. Ovo je binarni klasifikacijski problem i može se svrstati u klasu poznatih problema [oneVsAll ili multi klasifikacije](http://en.wikipedia.org/wiki/Multiclass_classification).
 
 
-## Podjela problema
+## Podjela problema i koraci rješavanja
 1. [Problem klasifikacije](#klasifikacija)
 2. [Neuronske mreže](#nn)
 3. [Odabir značajki](#znacajke)
@@ -16,8 +16,7 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
 6. [Korištenje](#upute)
 7. [Pisanje članka](#clanak)
 
-## Struktura datoteka 
-
+## Struktura datoteka
 * src (izvorni kod)
  + [ocr klasifikator](#ocr)
     - [templates.mat](#ocr)
@@ -44,6 +43,15 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
   + kod za sql bazu podataka
   + [primjeri testiranja](#testiranje)
   + [dokumentacija](#clanak)
+
+
+### Problem klasifikacije {#klasifikacija}
+ Kada promatramo dani problem lako je uočiti da se radi o binarnom klasifikacijskom problemu. To je problem svrstavanja objekta sa danim značajkama u klasu kojoj pripada.
+ U teoriji strojnog učenja, u kojoj naš problem promatramo, ovaj tip spada pod metode nadzornog učenja. Razlog tomu je što će za sve testne i trening primjere biti zadana
+ target varijabla ( u našem slučaju binarna).
+
+### Neuronska mreža
+ Metoda strojnog učenja koju smo odabrali za kreiranje našeg modela odnosno klasifikatora. 
 
 
 ## Kako koristiti 
