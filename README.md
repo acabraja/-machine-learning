@@ -8,7 +8,7 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
 
 
 ## Podjela problema i koraci rješavanja
-1. [Problem klasifikacije](#klasifikacija)
+1. [Problem klasifikacije](#problem-klasifikacija)
 2. [Neuronske mreže](#nn)
 3. [Odabir značajki](#znacajke)
 4. [Prikupljanje podataka](#podaci)
@@ -45,7 +45,7 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
   + [dokumentacija](#clanak)
 
 
-### <a id = "klasifikacija"></a>"Problem klasifikacije 
+### Problem klasifikacije 
  Kada promatramo dani problem lako je uočiti da se radi o binarnom klasifikacijskom problemu. To je problem svrstavanja objekta sa danim značajkama u klasu kojoj pripada.
  U teoriji strojnog učenja, u kojoj naš problem promatramo, ovaj tip spada pod metode nadzornog učenja. Razlog tomu je što će za sve testne i trening primjere biti zadana
  target varijabla ( u našem slučaju binarna).
