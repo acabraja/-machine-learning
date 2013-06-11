@@ -12,34 +12,34 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
 2. [Neuronske mreže](#neuronska-mrea)
 3. [Prikupljanje podataka](#prikupljanje-podataka)
 4. [Odabir značajki](#odabir-znaajki)
-5. [Testiranje](#testiranje)
+5. [Testiranje](#lanak)
 6. [Pokretanje u matlabu](#pokretanje-u-matlabu)
 7. [Pisanje članka](#lanak)
 
 ## Struktura datoteka
 * src (izvorni kod)
  + [ocr klasifikator](#ocr)
- + [create_feature.m](#znacajke)
- + [run_classification.m](#pokretanje)
- + [neuralNetwork.m](#nn)
- + [picture_corresponding.m](#znacajka1)
- + [ratio_picture_center.m](#znacajka2)
- + [pixel_interval_count.m](#znacajka3)
- + [bw.m](#znacajka4)
- + [side_ratio](#znacajka5)
- + [db_class.m](#klasa)
- + [picture_in_matrix.m](#citanje-slika)
+ + [create_feature.m](#odabir-znaajki)
+ + [run_classification.m](#odabir-znaajki)
+ + [neuralNetwork.m](#neuronska-mrea)
+ + [picture_corresponding.m](#odabir-znaajki)
+ + [ratio_picture_center.m](#odabir-znaajki)
+ + [pixel_interval_count.m](#odabir-znaajki)
+ + [bw.m](#odabir-znaajki)
+ + [side_ratio](#odabir-znaajki)
+ + [db_class.m](#baza)
+ + [picture_in_matrix.m]()
  + [make_model.m]()
  + [sigmoid.m]()
  + [costFunction.m]()
- + [plotData.m](#crtanje)
- + [sql_data.mat](#ucitani podaci)
- + [X.mat i y.mat](#mat-znacajke)
+ + [plotData.m]()
+ + [sql_data.mat](#ubaza)
+ + [X.mat i y.mat](#baza)
 * static
-  + [baza sa slikama](#podaci)
+  + [baza sa slikama]()
   + [kod za sql bazu podataka]()
-  + [primjeri testiranja](#testiranje)
-  + [dokumentacija](#clanak)
+  + [primjeri testiranja](#lanak)
+  + [dokumentacija](#lanak)
 
 
 ### Problem klasifikacije 
@@ -87,7 +87,7 @@ ako želimo vidjeti odnose neke dvije boje ovdje konkretno crna i bijela(nisu pr
 koliko širok interval neke boje želimo gledati te nam funkcija vrati broj takvih pojavljivanja na slici. Crna i bijela te siva se najčešće javljaju na tablicama dok su 
 ostali objekti šareniji te je broj pojavljivanja ovakvih intervala manji.
 
-###### broj crvenih, plavih i zelenih pixela
+###### Broj crvenih, plavih i zelenih pixela
 Koristimo istu funkciju kao i za prethodne značajke samo sada tražimo 3 osnovne boje. Primjetili smo da se na stranim tablicama četo pojavljuje jedna od ove 3 boje
 ali gotovo nikad u kombinaciji. Također smo primjetili da se na slikama gdje nisu tablice ove 3 boje gotovo uvijek pojavljuju u svim kombinacijama. Stoga ovau značajku smatramo 
 jako bitnom.
@@ -123,7 +123,15 @@ Zadnja mogućnost koju skripta nudi, trenutno nije završena, bazira se na model
 #### Preuzimanje
 Preuzeti zip direktorij sa github-a te ga raspakirati. S matlabom se pozicionirati u src direktorij unutar projekta i nakon toga je sve spremno za korištenje.
 
+#### Članak
+O radu je napisan članak u kojem su detaljnije iznesei podaci i testiranja algoritama. Članak možete preuzeti u <code>static/clanak</code> direktoriju: U istom
+direktoriju se nalaze i slike istraživanja, neuronske mreže, krivulja učenja i svi korisni podaci do kojih smo došli istraživanjem. Kako aktivno provodimo
+istraživanja mogu će su promjene trenutnog stanja u ovom direktoriju.
 
-Sve uočene greške možete nam proslijediti na mail
+> ####Baza 
+> U direktorijima je instaliran software pisat u javi koji radi virtualnu konekciju mysql-a i matlaba. Taj software je složen i koristimo ga bez eksplicitnog tedaljnog znanja o njemu
+> U slučaju da se želite uklučiti u razvoj u direktoriju baza možete naći sql datoteku za učitavanje cijele baze u mysql.
 
-A.Čabraja i A.Grbić
+
+> Sve uočene greške možete nam proslijediti na mail
+> A.Čabraja i A.Grbić
