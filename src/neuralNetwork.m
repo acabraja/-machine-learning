@@ -9,7 +9,7 @@ hiddenLayerSize = 6;
 net = patternnet(hiddenLayerSize);
 net.name = '0-1 classification';
 %net.layers{1}.transferFcn = 'purelin';
-%net.layers{2}.transferFcn = 'purelin';
+net.layers{2}.transferFcn = 'purelin';
 % Izabrati input output preprocesing funkcije
 % For a list of all processing functions type: help nnprocess
 net.inputs{1}.processFcns = {'removeconstantrows','mapminmax'};
@@ -22,8 +22,8 @@ for k = 1:K
     % For a list of all data division functions type: help nndivide
     net.divideFcn = 'divideind';  % Divide data by index
     net.divideMode = 'sample';  % Divide up every sample
-    net.divideParam.trainInd = [1:k,(k+21):128];
-    net.divideParam.valInd = (k+1):(k+20);
+    net.divideParam.trainInd = 1:128;
+    %net.divideParam.valInd = (k+1):(k+20);
     net.divideParam.testInd = 129:150;
 
     % algoritam za treniranje neuronske mreže

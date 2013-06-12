@@ -71,7 +71,7 @@ Automatsko prepoznavanje tablica metodama strojnog učenja
 
 ### Prikupljanje podataka
 Svi primjeri , nih 150 se nalazi u direktoriju <code>static/test-set/tablice </code>. Podaci su većinom mormalizirani što znači ekstrahirani su iz većih slika te je na većini njih okolni 
-šum sveden na minimum. U bazi se nalazi oko 100 slika na kojima se nalaze tablice te 50-ak slika na kojima su razni drugi objekti sličnih karakteristikam kao naprimjer, reklame, putokazi, znakovi. Svi podaci su prikupljeni ručno i prema vlastitom navođenu podjeljeni u skup za cross-Validaciju i testni skup. Podjela je takva da u testni skup spadaju one slike čiji je indeks > 128.
+šum sveden na minimum. U bazi se nalazi oko 100 slika na kojima se nalaze tablice te 50-ak slika na kojima su razni drugi objekti sličnih karakteristikam kao naprimjer, reklame, putokazi, znakovi. Svi podaci su prikupljeni ručno.
 Sve slike u bazi su numerirane od 1 do 150 i to im ujedno predstavlja i ime i id odnosno indeks. Prilikom prikupljanja podataka najveći problem je bio kut slikanja te tako imamo slike iz različitih kutova ali otprilike iste kvalitete. SA određenim značajkama ćemo pokušati taj problem svesti na jednu značajku reprezentiranu sa jednom realnom vrijednošću.
 
 ### Odabir značajki
