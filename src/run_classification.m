@@ -59,22 +59,37 @@ pause;
 % 1. verzija neuronske mreze
 % Slucajno se bira skup za validaciju i skup za testiranje
 fprintf('Testiranje neuronske mreze : 1.Verzija\n')
-neuralNetwork
+K = 1;
+neuralNetwork;
+fprintf('Za nastavak pritisnite enter ( racunanje greske i preciznosti)\n');
+pause;
+nacrtaj_graf(net,X,y);
+out = net(X(129:end,:)');
+razlika = nnz(round(out) - y(129:end)')
+tocnost = (22-razlika)/22
 fprintf('Za nastavak pritisnite enter...........\n');
 pause;
-%2. verzija neuronske mreze 
-% k-fold cross validacija 
-% TODO treba implementirati
-
+fprintf('testiranje neuronska mreza :_2 Vezrija (k-fold cross-validacija\n')
+K = 7 % optimalni po nasim testiranjima
+neuralNetwork;
+fprintf('Za nastavak pritisnite enter............\n');
+pause;
+fprintf('Razlika na novim pdacima \n')
+nacrtaj_graf(net,X,y);
+out = net(X(129:end,:)');
+razlika = nnz(round(out) - y(129:end)')
+tocnost = (22-razlika)/22
+fprintf('Za nastavak pritisnite enter ..........\n');
+pause;
 %ostala testiranja
 %testiranje na 2 po 2 featura radi nekih korisnih podataka
 fprintf('Testiranje linearnog regresijskog modela\n')
-prvi_drugi = gradient(X(:,1:2),y)
-treci_cetvrti = gradient(X(:,3:4),y)
-peti_sesti = gradient(X(:,5:6),y)
-sedmi_osmi = gradient(X(:,7:8),y)
-deveti_deseti = gradient(X(:,9:10),y)
-jed_dvan = gradient(X(:,11:12),y)
+prvi_drugi = gradient(X(:,1:2),y);
+treci_cetvrti = gradient(X(:,3:4),y);
+peti_sesti = gradient(X(:,5:6),y);
+sedmi_osmi = gradient(X(:,7:8),y);
+deveti_deseti = gradient(X(:,9:10),y);
+jed_dvan = gradient(X(:,11:12),y);
 fprintf('Za kraj pritisnite enter\n');
 pause;
 close all;

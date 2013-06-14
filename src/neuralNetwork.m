@@ -3,10 +3,19 @@
 %ulazni parametri
 inputs = X(1:128,:)';
 %size inputs
-targets = y(1:128)';
+targets = y(1:128,:)';
+
+%--------------------------------------------
+%sumTest = zeros(10,1); za trazenje modela
+%min_sum = 0;
+%index = 0;
+%all_var = zeros(10,1);
+% za testiranje modela
+%for l=2:10
+%-------------------------------------------
+
 % Create a Pattern Recognition Network
-hiddenLayerSize = 10;
-K=4;
+hiddenLayerSize = 7;
 indices = crossvalind('Kfold',targets,K);
 vector = 1:128;
 sumTest = 0;
@@ -15,13 +24,15 @@ for k = 1:K
     net = patternnet(hiddenLayerSize);
     %net = newff(inputs,targets,hiddenLayerSize);
     net.name = '0-1 classification';
-    %net.layers{1}.transferFcn = 'purelin';
-    %net.layers{2}.transferFcn = 'tansig';
+    %-------------------------------------------------
+    %net.layers{1}.transferFcn = 'logsig';
+    %net.layers{2}.transferFcn = 'logsig';
+    %-------------------------------------------------
     % Izabrati input output preprocesing funkcije
     % For a list of all processing functions type: help nnprocess
     net.inputs{1}.processFcns = {'removeconstantrows','mapminmax'};
     net.outputs{2}.processFcns = {'removeconstantrows','mapminmax'};
-    if(  K == 1)
+    if( K == 1)
         % Postavljane parametra za djeljenje podataka na Test, Validaciju, Trening
         % For a list of all data division functions type: help nndivide
         net.divideFcn = 'dividerand';  % Divide rand
@@ -41,6 +52,7 @@ for k = 1:K
         net.divideParam.trainInd = tren_ind;
         %net.divideParam.valInd = 101:128;
         net.divideParam.testInd = test_ind;
+        size(test_ind)
     end
 
     % algoritam za treniranje neuronske mreže
@@ -73,15 +85,39 @@ for k = 1:K
     valPerformance = perform(net,valTargets,outputs)
     testPerformance = perform(net,testTargets,outputs)
     sumTest = sumTest + testPerformance;
-% View the Network
-%view(net)
 
-% Plots
-% Uncomment these lines to enable various plots.
-    figure, plotperform(tr)
-%figure, plottrainstate(tr)
-figure, plotconfusion(targets,outputs)
-%figure, ploterrhist(errors)
+    %Korisni grafovi
+    %------------------------------------------------------------
+    % View the Network
+    %view(net)
+    % Plots
+    % Uncomment these lines to enable various plots.
+    %figure, plotperform(tr)
+    %figure, plottrainstate(tr)
+    %figure, plotconfusion(targets,outputs)
+    %figure, ploterrhist(errors)
+    %------------------------------------------------------------
 end
 
-sumTest = sumTest/K;
+sumTest = sumTest/K
+
+% Koristi se za izgradnju modela
+%-------------------------------------
+% nacrtaj_graf(net,X,y);
+% 
+% 
+% if (l == 2)
+%     min_sum = sumTest(l);
+%     net1 = patternnet(l);
+%     net1 = net;
+%     index = l;
+% else 
+%     if (sumTest(l) < min_sum)
+%         min_sum = sumTest(l);
+%         net1 = patternnet(l);
+%         net1 = net;
+%         index = l;
+%     end
+% end
+%--------------------------------------
+%end -> zakomentirana for petlja (ako testirate model ukljuciti)
